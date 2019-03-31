@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Data } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-comp1',
@@ -7,7 +8,11 @@ import { Router, ActivatedRoute } from '@angular/router';
   styles: []
 })
 export class Comp1Component implements OnInit {
+  public data: Data;
+
   constructor(public route: ActivatedRoute) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.data.subscribe(data => (this.data = data));
+  }
 }
